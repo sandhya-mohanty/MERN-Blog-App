@@ -12,7 +12,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble } from 'react-
               className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white'
             >
               <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-                Sahand's
+                Sandhya's
               </span>
               Blog
             </Link>
@@ -33,7 +33,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble } from 'react-
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  Sahand's Blog
+                  Sandhya's Blog
                 </Footer.Link>
               </Footer.LinkGroup>
             </div>
