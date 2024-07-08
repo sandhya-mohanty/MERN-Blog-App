@@ -81,8 +81,8 @@ if(imageFile){
             strokeWidth={5}
             styles={{
               root:{
-                width:"100",
-                height:"100",
+                width:"100%",
+                height:"100%",
                 position:"absolute",
                 top:0,
                 left:0,
@@ -93,7 +93,7 @@ if(imageFile){
             }}
             />
           )}
-          <img src={imageFileUrl || currentUser.profilePicture} alt='user' className={`rounded-full w-full h-full object-cover border-8 border-[lightgry] ${imageFileUploadProgress && imageFileUploadProgress <100 && 'opacity-25'}`}></img>
+          <img src={imageFileUrl || currentUser.profilePicture} alt='user' className={`rounded-full w-full h-full object-cover border-8 border-[lightgry] ${imageFileUploadProgress && imageFileUploadProgress <100 && 'opacity-60'}`}></img>
         </div>
         {imageFileUploadError && <Alert color='failure' >{imageFileUploadError}</Alert>}
         <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username}/>
