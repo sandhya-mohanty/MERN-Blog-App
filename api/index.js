@@ -19,6 +19,7 @@ app.use(express.json());
 app.listen(3000,()=>{
   console.log('server running in port 3000 !!')
 })
+//router configuration
 app.use('/api/user',userRoutes);
 app.use('/api/auth',authRoutes);
 
