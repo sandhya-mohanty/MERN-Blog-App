@@ -7,6 +7,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { getDownloadURL, getStorage, uploadBytesResumable,ref } from 'firebase/storage';
 import { app } from '../firebase';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const UpdatePost = () => {
   const [file,setFile] = useState(null);
@@ -16,7 +17,7 @@ const UpdatePost = () => {
   const [publishError,setPublishError] = useState(null)
   const {postId} = useParams();
   const navigate = useNavigate();
-
+  const {currentUser} =useSelector((state)=>state.user);
   useEffect(()=>{
     try {
       const fetchPost = async()=>{
@@ -76,11 +77,11 @@ const UpdatePost = () => {
       console.log(error);
     }
   };
-const handleSubmit = async(e) =>{
+const handleUpdateSubmit = async(e) =>{
   e.preventDefault();
   try {
-    const res = await fetch('/api/post/create',{
-      method:'POST',
+    const res = await fetch(`/api/post/updatepost/${postId}/${currentUser._id}`,{
+      method:'put',
       headers:{
         'Content-Type':'application/json',
       },
@@ -104,7 +105,7 @@ const handleSubmit = async(e) =>{
       <h1 className='text-center my-7 text-3xl font-semibold'>
         Update a Post
       </h1>
-     <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+     <form className='flex flex-col gap-4' onSubmit={handleUpdateSubmit}>
 <div className='flex flex-col gap-4 sm:flex-row justify-between'>
 <TextInput
  type='text'
