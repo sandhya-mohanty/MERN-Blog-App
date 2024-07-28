@@ -10,7 +10,7 @@ const {currentUser} =useSelector((state)=>state.user);
 const [users,setUsers] = useState([]);
 const [showMore,setShowMore] = useState(true);
 const [showModal,setShowModal] = useState(false);
-const [userIdToDelet,setUserIdToDelete] = useState('');
+const [userIdToDelete,setUserIdToDelete] = useState('');
 
 //getpost functionality
   useEffect(() =>{
@@ -49,24 +49,21 @@ try {
 }
 }
 //delete functionality
-const handleDeletePost = async() =>{
-//  setShowModal(false);
-//  try {
-//   const res = await fetch(`/api/post/deletepost/${postIdToDelet}/${currentUser._id}`,
-//     {
-//     method:'DELETE',
-//   });
-//   const data = await res.json();
-//   if(!res.ok){
-//     console.log(data.message);
-//   }else{
-//     setUserPosts((prev) =>
-//       prev.filter((post) => post._id !== postIdToDelet)
-//     );
-//   }
-//  } catch (error) {
-//   console.log(error.message)
-//  } 
+const handleDeleteUser = async() =>{
+  try {
+    const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+        method: 'DELETE',
+    });
+    const data = await res.json();
+    if (res.ok) {
+        setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
+        setShowModal(false);
+    } else {
+        console.log(data.message);
+    }
+} catch (error) {
+    console.log(error.message);
+}
 }
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
@@ -134,7 +131,7 @@ createdAt).toLocaleDateString()}
   Are you sure to you want to delete this User?
 </h3>
 <div className='flex justify-center gap-4'>
-<Button color='failure' onClick={handleDeletePost}>Yes,I'm sure</Button>
+<Button color='failure' onClick={handleDeleteUser}>Yes,I'm sure</Button>
 <Button color='gray' onClick={()=>setShowModal(false)}>No,Cancel</Button>
 </div>
 
