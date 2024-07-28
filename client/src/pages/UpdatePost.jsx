@@ -77,41 +77,44 @@ const UpdatePost = () => {
       console.log(error);
     }
   };
-const handleUpdateSubmit = async(e) =>{
+//update functionality
+const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch(`/api/post/updatepost/${postId}/${currentUser._id}`,{
-      method:'put',
-      headers:{
-        'Content-Type':'application/json',
+    const res = await fetch(`/api/post/updatepost/${formData._id}/${currentUser._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      body:JSON.stringify(formData),
+      body: JSON.stringify(formData),
     });
     const data = await res.json();
-    if(!res.ok){
-      setPublishError(data.message)
-    };
+    if (!res.ok) {
+      setPublishError(data.message);
+      return;
+    }
+
     if (res.ok) {
       setPublishError(null);
       navigate(`/post/${data.slug}`);
     }
   } catch (error) {
     setPublishError('Something went wrong');
-
   }
-}
+};
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
       <h1 className='text-center my-7 text-3xl font-semibold'>
         Update a Post
       </h1>
-     <form className='flex flex-col gap-4' onSubmit={handleUpdateSubmit}>
+     <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
 <div className='flex flex-col gap-4 sm:flex-row justify-between'>
 <TextInput
  type='text'
  value={formData.title}
   placeholder='title'
-   required id='title'
+   required
+    id='title'
     className='flex-1'
     onChange={(e)=>setFormData({ ...formData, title: e.target.value })
   }></TextInput>
