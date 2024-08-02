@@ -12,6 +12,7 @@ const [showMore,setShowMore] = useState(true);
 const [showModal,setShowModal] = useState(false);
 const [postIdToDelet,setPostIdToDelete] = useState('');
 
+//getpost functionality
   useEffect(() =>{
     const fetchPosts = async() =>{
       try {
@@ -31,6 +32,7 @@ const [postIdToDelet,setPostIdToDelete] = useState('');
       fetchPosts();
     }
   },[currentUser._id])
+  //showmore functionality
 const handleShowMore = async() =>{
 const startIndex = userPosts.length;
 try {
