@@ -72,7 +72,7 @@ export const signout = (req,res,next)=>{
   }
 };
 
-export const getUser = async(req,res,next) =>{
+export const getUsers = async(req,res,next) =>{
   if (!req.user.isAdmin) {
     return next(errorHandler(403, 'You are not allowed to see all users'));
   }
@@ -113,3 +113,16 @@ export const getUser = async(req,res,next) =>{
     next(error);
   }
 }
+ export const getUser = async (req,res,next) =>{
+  try {
+    const user = await User.findById(req.params.userId);
+    if(!user){
+      return next(errorHandler(404,'user not found '))
+    }
+    const {password,...rest}= user._doc;
+    res.status(200).json(rest);
+
+  } catch (error) {
+    next(error);
+  }
+ };

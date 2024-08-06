@@ -30,8 +30,6 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble } from 'react-
                 </Footer.Link>
                 <Footer.Link
                   href='/about'
-                  target='_blank'
-                  rel='noopener noreferrer'
                 >
                   Sandhya's Blog
                 </Footer.Link>
