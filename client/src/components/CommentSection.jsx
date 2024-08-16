@@ -80,7 +80,13 @@ const handleLike = async (commentId) => {
     console.log(error.message);
   }
 };
-
+const handleEdit = async (comment, editedContent) => {
+  setComments(
+    comments.map((c) =>
+      c._id === comment._id ? { ...c, content: editedContent } : c
+    )
+  );
+};
   return (
     <div>
       {currentUser ? (
@@ -143,7 +149,9 @@ const handleLike = async (commentId) => {
             <Comment 
             id={comment._id}
             comment={comment}
-            onLike={handleLike}/>
+            onLike={handleLike}
+            onEdit={handleEdit}/>
+
           ))}
         </>
       )}
