@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { FaThumbsUp } from 'react-icons/fa';
 import { Button, Textarea } from 'flowbite-react';
 
-const Comment = ({comment,onLike,onEdit}) => {
+const Comment = ({comment,onLike,onEdit,onDelete}) => {
 const [user,setUser]= useState({});
 const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
