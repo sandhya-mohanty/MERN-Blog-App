@@ -5,6 +5,7 @@ import {
   HiArrowSmRight,
   HiDocumentText,
   HiOutlineUserGroup,
+  HiAnnotation,
   
 } from 'react-icons/hi';
 import { Link, useLocation } from 'react-router-dom';
@@ -54,6 +55,7 @@ const handleSignout = async()=>{
           </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
+            <>
             <Link to='/dashboard?tab=users'>
               <Sidebar.Item active = {tab === 'users'}
               icon = {HiOutlineUserGroup}
@@ -61,6 +63,16 @@ const handleSignout = async()=>{
                 Users
               </Sidebar.Item>
             </Link>
+            <Link to='/dashboard?tab=comments'>
+            <Sidebar.Item
+              active={tab === 'comments'}
+              icon={HiAnnotation}
+              as='div'
+            >
+              Comments
+            </Sidebar.Item>
+          </Link>
+          </>
           )
 
           }
